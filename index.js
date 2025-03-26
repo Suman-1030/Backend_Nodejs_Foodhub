@@ -28,3 +28,7 @@ mongoose.connect(process.env.MONGO_STR)
 app.listen(PORT, () => {
     console.log(`Server started at port ${PORT}`);
 });
+
+app.use('/',(req,res)=>{
+  res.send("<h1>welccome to FoodHub</h1>")
+})
