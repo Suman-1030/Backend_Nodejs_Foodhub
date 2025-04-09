@@ -5,11 +5,18 @@ const VendorRouter = require("./routes/vendorRoutes");
 const bodyparser = require("body-parser");
 const firmroutes = require("./routes/Firmroutes");
 const productroutes=require("./routes/Product")
+const path = require("path");
+
+const cors=require('cors')
+
 
 dotenv.config();
 
 const app = express();
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use(cors())
 const PORT = process.env.PORT || 4000;
+
 
 app.use(bodyparser.json());
 app.use('/vendor', VendorRouter);

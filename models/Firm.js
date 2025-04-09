@@ -25,7 +25,7 @@ const firmSchema=new mongoose.Schema({
         type:[
             {
                 type:String,
-                enum:["South-Indian","North-Indian","Chinese","Bekery"]
+                enum:["South-indian","North-indian","Chinese","Bekery"]
             }
         ]
      },
