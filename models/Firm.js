@@ -29,7 +29,7 @@ const firmSchema=new mongoose.Schema({
             }
         ]
      },
-     Offers:{
+     Offer:{
         type: String,
         
     },
