@@ -5,6 +5,10 @@ const VendorRouter = require("./routes/vendorRoutes");
 const bodyparser = require("body-parser");
 const firmroutes = require("./routes/Firmroutes");
 const productroutes = require("./routes/Product");
+const CartRouter=require("./routes/CartRoute")
+const UserRoute=require("./routes/UserRoute")
+const OrderRouter=require('./routes/OrderRoute')
+const PaymentRoute=require('./routes/PaymentRouter')
 const path = require("path");
 const cors = require('cors');
 
@@ -23,6 +27,10 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/vendor', VendorRouter);
 app.use('/firm', firmroutes);
 app.use('/Product', productroutes);
+app.use('/cart',CartRouter)
+app.use('/user',UserRoute)
+app.use('/order',OrderRouter)
+app.use('/payment', PaymentRoute);
 
 // Connect MongoDB
 mongoose.connect(process.env.MONGO_STR)

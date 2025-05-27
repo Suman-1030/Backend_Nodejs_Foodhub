@@ -73,6 +73,23 @@ const Getproducts=async (req,res)=>{
      }
 }
 
+const Singleproduct=async (req,res)=>{
+    const productid=req.params.id
+    try{
+        const product= await Product.findById(productid)
+
+        if(!product){
+           return res.status(500).json({err:"product not found"})
+        }
+        res.status(202).json({product})
+
+    }
+    catch(error){
+       console.error(error);
+       res.status(500).json({ error: "Internal server error" })
+    }
+}
+
 const Deleteproduct=async (req,res)=>{
     try{
          const Productid=req.params.id
@@ -89,6 +106,25 @@ const Deleteproduct=async (req,res)=>{
 }
 
 
+const ProductByName = async (req, res) => {
+    const ProductName = req.params.name;
+  
+    try {
+      const name = await Product.find({
+        Productname: { $regex: ProductName, $options: 'i' } // 🔥 case-insensitive, partial match
+      });
+  
+      if (name.length === 0) {
+        return res.status(404).json({ msg: 'Product not found' });
+      }
+  
+      res.status(200).json({ msg: 'product found', name });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ msg: 'Server error', error: error.message });
+    }
+  };
+  
 
 
 
@@ -98,5 +134,4 @@ const Deleteproduct=async (req,res)=>{
 
 
 
-
-module.exports={addProduct:[upload.single('image'),addProduct],Getproducts,Deleteproduct}
+module.exports={addProduct:[upload.single('image'),addProduct],Getproducts,Deleteproduct,Singleproduct ,ProductByName} 
