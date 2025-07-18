@@ -42,12 +42,12 @@ const UserLogin = async (req, res) => {
     try {
         const user = await User.findOne({ Email: Email.trim() })
         if (!user) {
-            return res.status(400).json("Vendor not found");
+            return res.status(404).json({msg:"Vendor not found"});
         }
 
         const isMatch = await bcrypt.compare(Password, user.Password);
         if (!isMatch) {
-            return res.status(400).json("Invalid password");
+            return res.status(400).json({msg : "Invalid password"});
         }
 
         const UserId=user._id
@@ -60,7 +60,7 @@ const UserLogin = async (req, res) => {
 
     } catch (error) {
         console.error("Error:", error);
-        res.status(500).json({ error: "Internal error" });
+        res.status(500).json({ msg: "Internal error" });
     }
 };
     
