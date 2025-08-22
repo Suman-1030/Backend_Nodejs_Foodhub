@@ -9,6 +9,7 @@ const CartRouter=require("./routes/CartRoute")
 const UserRoute=require("./routes/UserRoute")
 const OrderRouter=require('./routes/OrderRoute')
 const PaymentRoute=require('./routes/PaymentRouter')
+
 const path = require("path");
 const cors = require('cors');
 
@@ -18,7 +19,7 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 app.use(cors());
-app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({ extended: true }));
 
 // Serve static files (uploads)
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
@@ -31,6 +32,10 @@ app.use('/cart',CartRouter)
 app.use('/user',UserRoute)
 app.use('/order',OrderRouter)
 app.use('/payment', PaymentRoute);
+
+
+
+
 
 // Connect MongoDB
 mongoose.connect(process.env.MONGO_STR)

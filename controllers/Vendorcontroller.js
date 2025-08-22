@@ -3,6 +3,10 @@ const Firm=require("../models/Firm")
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
+const redisClient = require('../redis');
+const { json } = require("body-parser");
+
+
 
 dotenv.config();
 const SECRET_KEY = process.env.SECRET_KEY;
@@ -66,12 +70,20 @@ const vendorLogin = async (req, res) => {
     
 
 
-
+const exp= 3600;
 const VendorRecords=async (req,res)=>{
-
+   
     try{  
-    const vendors= await Vendor.find().populate('firm')
-    res.json({vendors})
+        const Catchkey='vendors'
+        const Catched= await redisClient.get(Catchkey)
+        if(Catched){
+           console.log('From Cache') 
+           return res.json({vendors:JSON.parse(Catched)})
+        }
+        const vendors= await Vendor.find().populate('firm')
+        await redisClient.setEx(Catchkey,exp,JSON.stringify(vendors))
+        console.log('From MongoDB')
+        res.json({vendors})
     }
     catch(error){
         console.log("error",error)
