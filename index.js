@@ -18,7 +18,11 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-app.use(cors());
+app.use(cors({
+    origin: 'https://frontend-ui-foodhub.vercel.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    credentials: true
+  }));
 app.use(bodyparser.urlencoded({ extended: true }));
 
 // Serve static files (uploads)
