@@ -18,12 +18,18 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 4000;
 
+
+app.use(express.json());             // <-- parse JSON bodies
+app.use(bodyparser.urlencoded({ extended: true })); // parse URL-encoded bodies
+
+
 app.use(cors({
-    origin: 'https://frontend-ui-foodhub.vercel.app',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    credentials: true
+    origin: ['http://localhost:5173','https://frontend-ui-foodhub.vercel.app'],               // Allow requests from any origin
+    methods: ['GET','POST','PUT','DELETE','OPTIONS'],
+    allowedHeaders: ['Content-Type','Authorization'],
+    credentials: false         // must be false if origin is '*'
   }));
-app.use(bodyparser.urlencoded({ extended: true }));
+
 
 // Serve static files (uploads)
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));

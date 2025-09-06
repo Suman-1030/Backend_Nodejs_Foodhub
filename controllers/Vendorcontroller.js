@@ -46,7 +46,7 @@ const vendorLogin = async (req, res) => {
     try {
         const vendor = await Vendor.findOne({ Email: Email.trim() })
         if (!vendor) {
-            return res.status(400).json("Vendor not found");
+            return res.status(404).json("Vendor not found");
         }
 
         const isMatch = await bcrypt.compare(Password, vendor.Password);
