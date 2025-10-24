@@ -5,6 +5,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: [
       'build',
+      '--no-cache',
       '-t',
       'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/foodhub-backend/f-backend:latest',
       '.'
