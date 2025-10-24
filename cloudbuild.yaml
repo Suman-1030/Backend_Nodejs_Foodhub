@@ -6,7 +6,7 @@ Logging: CLOUD_LOGGING_ONLY
 steps:
   - name : 'gcr.io/cloud-builders/docker'
     args: [
-    -'build',
+    'build',
     '-t',
     'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/F-backend',
      '.'
@@ -23,7 +23,7 @@ steps:
     args: [
       'run', 'deploy', 'med-backend-service',
       '--image', 'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/foodhub-backend/F-backend:latest',
-      '--region', 'asia-south2',
+      '--region', 'asia-south1',
       '--platform', 'managed',
       '--allow-unauthenticated'
     ]
