@@ -6,25 +6,25 @@ steps:
     args: [
       'build',
       '-t',
-      'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/foodhub-backend/F-backend:latest',
+      'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/foodhub-backend/f-backend:latest',
       '.'
     ]
 
   - name: 'gcr.io/cloud-builders/docker'
     args: [
       'push',
-      'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/foodhub-backend/F-backend:latest'
+      'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/foodhub-backend/f-backend:latest'
     ]
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
     args: [
       'run', 'deploy', 'med-backend-service',
-      '--image', 'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/foodhub-backend/F-backend:latest',
+      '--image', 'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/foodhub-backend/f-backend:latest',
       '--region', 'asia-south1',
       '--platform', 'managed',
       '--allow-unauthenticated'
     ]
 
 images:
-  - 'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/foodhub-backend/F-backend:latest'
+  - 'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/foodhub-backend/f-backend:latest'
