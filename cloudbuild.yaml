@@ -28,6 +28,4 @@ steps:
       '--allow-unauthenticated'
     ]
 
-
-
-  image: - 'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/foodhub-backend:latest'
+images: - 'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/foodhub-backend:latest'
