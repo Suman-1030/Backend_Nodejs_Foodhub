@@ -1,4 +1,3 @@
-
 FROM node:18-alpine
 
 WORKDIR /app
@@ -11,8 +10,5 @@ COPY . .
 
 EXPOSE 8080
 
-
-CMD ["npm","index.js"]
-
-
-
+# Use npm start (which runs "node index.js" from your package.json)
+CMD ["npm", "start"]
