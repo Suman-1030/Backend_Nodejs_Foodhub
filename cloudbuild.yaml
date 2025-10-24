@@ -4,24 +4,23 @@ Logging: CLOUD_LOGGING_ONLY
 
 
 steps:
-
--name : 'gcr.io/cloud-builders/docker'
- args: [
+  - name : 'gcr.io/cloud-builders/docker'
+    args: [
     -'build',
     '-t',
     'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/F-backend',
      '.'
  ]
 
- -name : 'gcr.io/cloud-builders/docker'
-  args: [
+  - name : 'gcr.io/cloud-builders/docker'
+    args: [
       'push',
       'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/F-backend'
   ]
 
- -name : 'gcr.io/google.com/cloudsdktool/cloudsdk'
-  entrypoint: gcloud,
-  args: [
+  - name : 'gcr.io/google.com/cloudsdktool/cloudsdk'
+    entrypoint: gcloud
+    args: [
       'run', 'deploy', 'med-backend-service',
       '--image', 'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/foodhub-backend/F-backend:latest',
       '--region', 'asia-south2',
@@ -31,4 +30,4 @@ steps:
 
 
 
-image: -'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/foodhub-backend:latest'
+  image: - 'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/foodhub-backend:latest'
