@@ -23,7 +23,8 @@ steps:
       '--image', 'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/foodhub-backend/f-backend:latest',
       '--region', 'asia-south1',
       '--platform', 'managed',
-      '--allow-unauthenticated'
+      '--allow-unauthenticated',
+      '--set-env-vars', 'PORT=8080'
     ]
 
 images:
