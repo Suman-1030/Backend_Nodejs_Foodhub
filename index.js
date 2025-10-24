@@ -27,7 +27,7 @@ app.use(cors({
     origin: ['http://localhost:5173','https://frontend-ui-foodhub.vercel.app'],               // Allow requests from any origin
     methods: ['GET','POST','PUT','DELETE','OPTIONS'],
     allowedHeaders: ['Content-Type','Authorization'],
-    credentials: false         // must be false if origin is '*'
+    credentials: false         // must be false if origin is '*'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/foodhub-backend
   }));
 
 
