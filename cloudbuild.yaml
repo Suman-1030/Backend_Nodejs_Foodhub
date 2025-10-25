@@ -2,6 +2,7 @@ options:
   logging: CLOUD_LOGGING_ONLY
 
 steps:
+  # Step 1: Build Docker image
   - name: 'gcr.io/cloud-builders/docker'
     args: [
       'build',
@@ -10,12 +11,14 @@ steps:
       '.'
     ]
 
+  # Step 2: Push image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: [
       'push',
       'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/food-backend/f-backend:latest'
     ]
 
+  # Step 3: Deploy to Cloud Run with environment variables
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
     args: [
@@ -23,8 +26,9 @@ steps:
       '--image', 'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/food-backend/f-backend:latest',
       '--region', 'asia-south1',
       '--platform', 'managed',
-      '--allow-unauthenticated'
-     
+      '--allow-unauthenticated',
+      '--set-env-vars',
+      'MONGO_STR=mongodb+srv://sumanpr2:sumanpr2@cluster0.tc1pl.mongodb.net/sumanpr2,SECRET_KEY=kagithala,key_secret=kFHQ8KwNi3dPk4RSNIhzZRQF,key_id=rzp_test_v1sxGn5PiHxGVH,REDIS_HOST=redis-17276.c330.asia-south1-1.gce.redns.redis-cloud.com:17276,REDIS_PORT=17276,REDIS_PASSWORD=AgUx4jEgRKuoSqiTzZAHkSKmpM6mqCTe'
     ]
 
 images:
