@@ -23,12 +23,7 @@ app.use(express.json());             // <-- parse JSON bodies
 app.use(bodyparser.urlencoded({ extended: true })); // parse URL-encoded bodies
 
 
-app.use(cors({
-    origin: ['http://localhost:5173','https://frontend-ui-foodhub.vercel.app','https://foodhub-backend-hmv6utam4q-el.a.run.app/'],               // Allow requests from any origin
-    methods: ['GET','POST','PUT','DELETE','OPTIONS'],
-    allowedHeaders: ['Content-Type','Authorization'],
-    credentials: false         // must be false if origin is '*'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/foodhub-backend
-  }));
+app.use(cors());
 
 
 // Serve static files (uploads)
