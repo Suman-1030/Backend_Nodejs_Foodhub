@@ -22,7 +22,7 @@ steps:
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
     args: [
-      'run', 'deploy', 'med-backend-service',
+      'run', 'deploy', 'Food-backend-service',
       '--image', 'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/food-backend/f-backend:latest',
       '--region', 'asia-south1',
       '--platform', 'managed',
