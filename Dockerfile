@@ -10,5 +10,5 @@ COPY . .
 
 EXPOSE 8080
 
-# Use npm start (which runs "node index.js" from your package.json)
+
 CMD ["npm", "start"]
