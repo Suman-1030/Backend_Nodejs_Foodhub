@@ -19,8 +19,8 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 
-app.use(express.json());             // <-- parse JSON bodies
-app.use(bodyparser.urlencoded({ extended: true })); // parse URL-encoded bodies
+app.use(express.json());             
+app.use(bodyparser.urlencoded({ extended: true })); 
 
 
 app.use(cors());
@@ -36,7 +36,7 @@ app.use('/Product', productroutes);
 app.use('/cart',CartRouter)
 app.use('/user',UserRoute)
 app.use('/order',OrderRouter)
-app.use('/payment', PaymentRoute);
+app.use('/payment', PaymentRoute)
 
 
 
