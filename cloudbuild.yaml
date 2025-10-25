@@ -7,7 +7,7 @@ steps:
     args: [
       'build',
       '-t',
-      'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/food-backend/f-backend:latest',
+      'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/foodhub-backend/foodhub-backend-image:latest',
       '.'
     ]
 
@@ -15,15 +15,15 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: [
       'push',
-      'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/food-backend/f-backend:latest'
+      'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/foodhub-backend/foodhub-backend-image:latest'
     ]
 
   # Step 3: Deploy to Cloud Run with environment variables
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
     args: [
-      'run', 'deploy', 'food-backend-service',
-      '--image', 'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/food-backend/f-backend:latest',
+      'run', 'deploy', 'foodhub-backend-service',
+      '--image', 'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/foodhub-backend/foodhub-backend-image:latest',
       '--region', 'asia-south1',
       '--platform', 'managed',
       '--allow-unauthenticated',
@@ -32,4 +32,4 @@ steps:
     ]
 
 images:
-  - 'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/food-backend/f-backend:latest'
+  - 'asia-south1-docker.pkg.dev/poetic-loop-471609-h3/foodhub-backend/foodhub-backend-image:latest'
