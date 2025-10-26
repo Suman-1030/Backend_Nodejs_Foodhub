@@ -23,19 +23,12 @@ app.use(express.json());
 app.use(bodyparser.urlencoded({ extended: true })); 
 
 
-app.use((req, res, next) => {
-   
-    res.header("Access-Control-Allow-Origin", "https://frontend-ui-foodhub-omr53ysyv-sumans-projects-cb421f09.vercel.app");
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization"); 
-    res.header("Access-Control-Allow-Credentials", "true"); 
-   
-    if (req.method === 'OPTIONS') {
-      return res.sendStatus(200);
-    }
-  
-    next();
-  });
+app.use(cors({
+    origin: '*', // Set to wildcard to allow all origins
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
+    credentials: true
+}));
 
 
 // Serve static files (uploads)
