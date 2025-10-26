@@ -28,7 +28,7 @@ steps:
       '--platform', 'managed',
       '--allow-unauthenticated',
       '--set-env-vars',
-      'MONGO_STR=mongodb+srv://sumanpr2:sumanpr2@cluster0.tc1pl.mongodb.net/sumanpr2,SECRET_KEY=kagithala,key_secret=kFHQ8KwNi3dPk4RSNIhzZRQF,key_id=rzp_test_v1sxGn5PiHxGVH,REDIS_HOST=redis-17276.c330.asia-south1-1.gce.redns.redis-cloud.com:17276,REDIS_PORT=17276,REDIS_PASSWORD=AgUx4jEgRKuoSqiTzZAHkSKmpM6mqCTe'
+      'MONGO_STR=mongodb+srv://sumanpr2:sumanpr2@cluster0.tc1pl.mongodb.net/sumanpr2,SECRET_KEY=kagithala,key_secret=kFHQ8KwNi3dPk4RSNIhzZRQF,key_id=rzp_test_v1sxGn5PiHxGVH,REDIS_HOST=redis-17276.c330.asia-south1-1.gce.redns.redis-cloud.com,REDIS_PORT=17276,REDIS_PASSWORD=AgUx4jEgRKuoSqiTzZAHkSKmpM6mqCTe'
     ]
 
 images:
