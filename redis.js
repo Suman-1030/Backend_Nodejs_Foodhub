@@ -9,7 +9,7 @@ const redisClient = redis.createClient({
   socket: {
     host: process.env.REDIS_HOST,
     port: process.env.REDIS_PORT,
-    tls: true, // ✅ Add this for Redis Cloud
+    
   },
   password: process.env.REDIS_PASSWORD,
 });
